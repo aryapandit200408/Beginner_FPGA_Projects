@@ -1,6 +1,6 @@
 <p style= "text-align: center;" >
   
-  <h1> Hello Folks!</h1>  
+## Hello Folks!
 
 #### This is a repository showcasing my personal FPGA Projects, as well as Some Verilog Coding Practice...
 
