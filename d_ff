@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+// This is the code for negative edge triggered D Flip Flop made using master slaving two level triggered D Flip Flops
+module ms_d_ff(
+input d, input clk,input st, input rst, output q, output qbar
+    );
+    wire MS1, MS2;
+    d_ff mdff(d , clk, st, rst, MS1, MS2);
+    d_ff sdff(MS1, ~clk, st, rst, q, qbar);
+endmodule
+
+module d_ff(input d, input clk, input set, input rst, output  q, output qbar);
+    wire W1, W2;
+    and N1(W1, d, clk);
+    and N2(W2, ~d, clk);
+    nand N3(q, qbar, ~W1, set); //We Choose Active Low for set
+    nand N4(qbar, q, ~W2, rst); //We Choose Active Low for rst
+endmodule
